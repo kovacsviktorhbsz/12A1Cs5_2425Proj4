@@ -25,23 +25,23 @@
             <ComboBoxItem>Foglalók</ComboBoxItem>
         </ComboBox>
 
-        <DataGrid x:Name="DGFoglalasok" Grid.Row="4" Margin="5px" SelectionChanged="DGFoglalasok_SelectionChanged" IsReadOnly="True" ItemsSource="{Binding}" AutoGenerateColumns="False" Visibility="Collapsed">
+        <DataGrid x:Name="DGFoglalasok" Grid.Row="4" Margin="5px" SelectionChanged="DGFoglalasok_SelectionChanged" ItemsSource="{Binding}" AutoGenerateColumns="False" Visibility="Collapsed" CurrentCellChanged="DGFoglalasok_CurrentCellChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Szobaszám"  Binding="{Binding Szobaszam}"/>
-                <DataGridTextColumn Header="Bejelentkezés"  Binding="{Binding CheckInDatum, StringFormat=yyyy-MM-dd}"/>
-                <DataGridTextColumn Header="Kijelentkezés"  Binding="{Binding CheckOutDatum, StringFormat=yyyy-MM-dd}"/>
+                <DataGridTextColumn Header="Szobaszám" IsReadOnly="True" Binding="{Binding Szobaszam}"/>
+                <DataGridTextColumn Header="Bejelentkezés" IsReadOnly="True"  Binding="{Binding CheckInDatum, StringFormat=yyyy-MM-dd}"/>
+                <DataGridTextColumn Header="Kijelentkezés" IsReadOnly="True"  Binding="{Binding CheckOutDatum, StringFormat=yyyy-MM-dd}"/>
                 <DataGridTextColumn Header="Ellátás"  Binding="{Binding Ellatas}"/>
-                <DataGridTextColumn Header="Vendégek száma"  Binding="{Binding SzemelyekSzama}"/>
-
-                <DataGridTextColumn Header="Név"  Binding="{Binding Foglalo.Nev}"/>
-                <DataGridTextColumn Header="E-Mail"  Binding="{Binding Foglalo.Email}"/>
-                <DataGridTextColumn Header="Irányítószám"  Binding="{Binding Foglalo.Iranyitoszam}"/>
+                <DataGridTextColumn Header="Vendégek száma" IsReadOnly="True"  Binding="{Binding SzemelyekSzama}"/>
+                <DataGridTextColumn Header="Személyi szám" IsReadOnly="True" Binding="{Binding Foglalo.Szemszam}"/>
+                <DataGridTextColumn Header="Név" IsReadOnly="True" Binding="{Binding Foglalo.Nev}"/>
+                <DataGridTextColumn Header="E-Mail" IsReadOnly="True"  Binding="{Binding Foglalo.Email}"/>
+                <DataGridTextColumn Header="Irányítószám" IsReadOnly="True"  Binding="{Binding Foglalo.Iranyitoszam}"/>
             </DataGrid.Columns>
         </DataGrid>
 
-        <DataGrid x:Name="DGFoglalok" Grid.Row="4" Margin="5px" SelectionChanged="DGFoglalok_SelectionChanged" IsReadOnly="True" ItemsSource="{Binding}" AutoGenerateColumns="False" Visibility="Collapsed">
+        <DataGrid x:Name="DGFoglalok" Grid.Row="4" Margin="5px" SelectionChanged="DGFoglalok_SelectionChanged" ItemsSource="{Binding}" AutoGenerateColumns="False" Visibility="Collapsed" CurrentCellChanged="DGFoglalok_CurrentCellChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Személyi szám"  Binding="{Binding Szemszam}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Személyi szám" Binding="{Binding Szemszam}"/>
                 <DataGridTextColumn Header="Név"  Binding="{Binding Nev}"/>
                 <DataGridTextColumn Header="Irányítószám"  Binding="{Binding Iranyitoszam}"/>
                 <DataGridTextColumn Header="E-Mail"  Binding="{Binding Email}"/>

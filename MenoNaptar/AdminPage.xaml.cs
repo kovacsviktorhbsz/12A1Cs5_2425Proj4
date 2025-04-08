@@ -156,5 +156,15 @@ namespace MenoNaptar
                     return;
             }
         }
+
+        private void DGFoglalok_CurrentCellChanged(object sender, EventArgs e)
+        {
+            Context.SaveChanges();
+        }
+
+        private void DGFoglalasok_CurrentCellChanged(object sender, EventArgs e)
+        {
+            Context.SaveChanges();
+        }
     }
 }
