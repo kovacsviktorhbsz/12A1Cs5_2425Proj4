@@ -1,0 +1,94 @@
+﻿<Window x:Class="MenoNaptar.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MenoNaptar"
+        mc:Ignorable="d"
+        Title="Szobafoglaló-rendszer" Height="700" Width="800">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="0.3*" />
+            <RowDefinition />
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.3*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition />
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom" Text="Vendégek száma" Margin="5px" />
+            <TextBox x:Name="numPeople"  Grid.Row="1" Grid.Column="0" Margin="5px" FontSize="25px" TextChanged="DataTextChanged" />
+            <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" Text="Ellátás" Margin="5px" />
+            <ComboBox x:Name="ellatasLevel" Grid.Row="1" Grid.Column="1" Margin="5px" FontSize="15px" VerticalContentAlignment="Center">
+                <ComboBoxItem Tag="0" Content="Nincs" IsSelected="True" />
+                <ComboBoxItem Tag="1" Content="Reggeli"/>
+                <ComboBoxItem Tag="2" Content="Reg. + Vacs."/>
+                <ComboBoxItem Tag="3" Content="All-inclusive"/>
+            </ComboBox>
+
+            <TextBlock Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Text="Személyi szám" Margin="5px" />
+            <TextBox x:Name="TbSzemszam" Grid.Row="1" Grid.Column="2" Margin="5px" VerticalAlignment="Top" MaxLength="8" TextChanged="TbSzemszam_TextChanged" />
+            <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" Text="Név" Margin="5px" />
+            <TextBox x:Name="TbNev" Grid.Row="3" Grid.Column="0" Margin="5px" VerticalAlignment="Top" IsEnabled="False" />
+            <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom" Text="E-Mail" Margin="5px" />
+            <TextBox x:Name="TbEmail" Grid.Row="3" Grid.Column="1" Margin="5px" VerticalAlignment="Top" IsEnabled="False" />
+            <TextBlock Grid.Row="2" Grid.Column="2" VerticalAlignment="Bottom" Text="Irányítószám" Margin="5px" />
+            <TextBox x:Name="TbIsz" Grid.Row="3" Grid.Column="2" Margin="5px" VerticalAlignment="Top" IsEnabled="False" />
+
+        </Grid>
+
+       
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="prevMonthBtn" Grid.Row="0" Grid.Column="0" Content="&lt;-" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="117,26,0,25.4" Click="prevMonthBtn_Click" />
+            <TextBlock x:Name="TBYearMonth" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" />
+            <Button x:Name="nextMonthBtn" Grid.Row="0" Grid.Column="2" Content="->" VerticalAlignment="Center" HorizontalAlignment="Left" Click="nextMonthBtn_Click" />
+        </Grid>
+        
+        <Grid x:Name="naptarGrid" Grid.Row="2" Grid.Column="0" Margin="5px">
+            
+        </Grid>
+
+        <Grid Grid.Row="3" Grid.Column="0">
+            <ComboBox x:Name="CBAvailableRooms" FontSize="15px" Margin="5px" VerticalContentAlignment="Center" IsEnabled="False" SelectionChanged="CBAvailableRooms_SelectionChanged">
+
+            </ComboBox>
+        </Grid>
+
+        <Grid Grid.Row="4" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="0.7*" />
+            </Grid.RowDefinitions>
+
+            <Button x:Name="foglalasBtn" Grid.Row="0" Grid.Column="0" Margin="5px" Content="Foglalás" FontSize="25px" IsEnabled="False" Click="foglalasBtn_Click" />
+            <Button x:Name="adminBtn" Grid.Row="1" Grid.Column="0" Margin="5px" Content="Adminisztrációs felület" FontSize="15px" Click="adminBtn_Click" />
+        </Grid>
+        
+
+        <Image x:Name="szobaKep" Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" VerticalAlignment="Center" HorizontalAlignment="Center" />
+    </Grid>
+</Window>

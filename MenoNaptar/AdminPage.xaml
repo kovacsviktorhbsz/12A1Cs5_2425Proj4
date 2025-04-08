@@ -1,0 +1,53 @@
+﻿<Window x:Class="MenoNaptar.AdminPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MenoNaptar"
+        mc:Ignorable="d"
+        Title="Adminisztrációs Felület" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="0.7*" />
+            <RowDefinition Height="4*"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Margin="5px 0px" Text="Keresés" VerticalAlignment="Center"/>
+        <TextBox x:Name="TbKereses" Grid.Row="1" Margin="5px" VerticalAlignment="Top" TextChanged="TbKereses_TextChanged" />
+
+        <TextBlock Grid.Row="2" Margin="5px 0px" Text="Melyik tábla?" VerticalAlignment="Center"/>
+        <ComboBox x:Name="CBTabla" Grid.Row="3" Margin="5px" SelectionChanged="CBTabla_SelectionChanged" VerticalContentAlignment="Center" >
+            <ComboBoxItem>Foglalások</ComboBoxItem>
+            <ComboBoxItem>Foglalók</ComboBoxItem>
+        </ComboBox>
+
+        <DataGrid x:Name="DGFoglalasok" Grid.Row="4" Margin="5px" SelectionChanged="DGFoglalasok_SelectionChanged" IsReadOnly="True" ItemsSource="{Binding}" AutoGenerateColumns="False" Visibility="Collapsed">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Szobaszám"  Binding="{Binding Szobaszam}"/>
+                <DataGridTextColumn Header="Bejelentkezés"  Binding="{Binding CheckInDatum, StringFormat=yyyy-MM-dd}"/>
+                <DataGridTextColumn Header="Kijelentkezés"  Binding="{Binding CheckOutDatum, StringFormat=yyyy-MM-dd}"/>
+                <DataGridTextColumn Header="Ellátás"  Binding="{Binding Ellatas}"/>
+                <DataGridTextColumn Header="Vendégek száma"  Binding="{Binding SzemelyekSzama}"/>
+
+                <DataGridTextColumn Header="Név"  Binding="{Binding Foglalo.Nev}"/>
+                <DataGridTextColumn Header="E-Mail"  Binding="{Binding Foglalo.Email}"/>
+                <DataGridTextColumn Header="Irányítószám"  Binding="{Binding Foglalo.Iranyitoszam}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid x:Name="DGFoglalok" Grid.Row="4" Margin="5px" SelectionChanged="DGFoglalok_SelectionChanged" IsReadOnly="True" ItemsSource="{Binding}" AutoGenerateColumns="False" Visibility="Collapsed">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Személyi szám"  Binding="{Binding Szemszam}"/>
+                <DataGridTextColumn Header="Név"  Binding="{Binding Nev}"/>
+                <DataGridTextColumn Header="Irányítószám"  Binding="{Binding Iranyitoszam}"/>
+                <DataGridTextColumn Header="E-Mail"  Binding="{Binding Email}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button x:Name="torlesBtn" Grid.Row="5" Margin="5px" Content="Törlés" IsEnabled="False" Background="#eb4034" FontSize="15px" Click="torlesBtn_Click" />
+    </Grid>
+</Window>
