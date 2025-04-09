@@ -38,7 +38,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `foglalas` (
   `foglalasId` int(11) NOT NULL,
   `szobaszam` int(11) NOT NULL,
-  `szemszam` varchar(8) NOT NULL,
+  `foglaloSzemszam` varchar(8) NOT NULL,
   `ellatas` int(11) NOT NULL,
   `szemelyekSzama` int(11) NOT NULL,
   `checkInDatum` date NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE `foglalas` (
 -- A tábla adatainak kiíratása `foglalas`
 --
 
-INSERT INTO `foglalas` (`foglalasId`, `szobaszam`, `szemszam`, `ellatas`, `szemelyekSzama`, `checkInDatum`, `checkOutDatum`) VALUES
+INSERT INTO `foglalas` (`foglalasId`, `szobaszam`, `foglaloSzemszam`, `ellatas`, `szemelyekSzama`, `checkInDatum`, `checkOutDatum`) VALUES
 (1, 101, 'AABBCC12', 1, 2, '2024-12-10', '2024-12-15'),
 (2, 102, 'ABCDEF12', 3, 4, '2024-12-26', '2024-12-29'),
 (3, 103, 'CIXNSA72', 0, 2, '2025-02-20', '2025-02-25'),
@@ -66,7 +66,7 @@ INSERT INTO `foglalas` (`foglalasId`, `szobaszam`, `szemszam`, `ellatas`, `szeme
 --
 
 CREATE TABLE `foglalo` (
-  `szemSzam` varchar(8) NOT NULL,
+  `szemszam` varchar(8) NOT NULL,
   `nev` varchar(64) NOT NULL,
   `iranyitoszam` int(11) NOT NULL,
   `email` varchar(64) NOT NULL
@@ -76,7 +76,7 @@ CREATE TABLE `foglalo` (
 -- A tábla adatainak kiíratása `foglalo`
 --
 
-INSERT INTO `foglalo` (`szemSzam`, `nev`, `iranyitoszam`, `email`) VALUES
+INSERT INTO `foglalo` (`szemszam`, `nev`, `iranyitoszam`, `email`) VALUES
 ('AABBCC12', 'Kovács János', 1011, 'janos.kovacs@gmail.com'),
 ('ABCDEF12', 'Szabó Erika', 1020, 'erika.szabo@gmail.com'),
 ('CIXNSA72', 'Tóth Béla', 1117, 'bela.toth@gmail.com'),
@@ -144,13 +144,13 @@ INSERT INTO `szobatipus` (`sztId`, `ferohelyek`, `alaprajzKep`) VALUES
 ALTER TABLE `foglalas`
   ADD PRIMARY KEY (`foglalasId`),
   ADD KEY `szobaszam` (`szobaszam`),
-  ADD KEY `szemszam` (`szemszam`);
+  ADD KEY `foglaloSzemszam` (`foglaloSzemszam`);
 
 --
 -- A tábla indexei `foglalo`
 --
 ALTER TABLE `foglalo`
-  ADD PRIMARY KEY (`szemSzam`);
+  ADD PRIMARY KEY (`szemszam`);
 
 --
 -- A tábla indexei `szoba`
@@ -190,7 +190,7 @@ ALTER TABLE `szobatipus`
 --
 ALTER TABLE `foglalas`
   ADD CONSTRAINT `foglalas_ibfk_1` FOREIGN KEY (`szobaszam`) REFERENCES `szoba` (`szobaszam`),
-  ADD CONSTRAINT `foglalas_ibfk_2` FOREIGN KEY (`szemszam`) REFERENCES `foglalo` (`szemSzam`);
+  ADD CONSTRAINT `foglalas_ibfk_2` FOREIGN KEY (`foglaloSzemszam`) REFERENCES `foglalo` (`szemszam`);
 
 --
 -- Megkötések a táblához `szoba`

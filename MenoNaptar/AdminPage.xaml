@@ -25,7 +25,7 @@
             <ComboBoxItem>Foglalók</ComboBoxItem>
         </ComboBox>
 
-        <DataGrid x:Name="DGFoglalasok" Grid.Row="4" Margin="5px" SelectionChanged="DGFoglalasok_SelectionChanged" ItemsSource="{Binding}" AutoGenerateColumns="False" Visibility="Collapsed" CurrentCellChanged="DGFoglalasok_CurrentCellChanged">
+        <DataGrid x:Name="DGFoglalasok" Grid.Row="4" Margin="5px" SelectionChanged="DGFoglalasok_SelectionChanged" ItemsSource="{Binding}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Visibility="Collapsed" CurrentCellChanged="DGFoglalasok_CurrentCellChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Szobaszám" IsReadOnly="True" Binding="{Binding Szobaszam}"/>
                 <DataGridTextColumn Header="Bejelentkezés" IsReadOnly="True"  Binding="{Binding CheckInDatum, StringFormat=yyyy-MM-dd}"/>
@@ -39,7 +39,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <DataGrid x:Name="DGFoglalok" Grid.Row="4" Margin="5px" SelectionChanged="DGFoglalok_SelectionChanged" ItemsSource="{Binding}" AutoGenerateColumns="False" Visibility="Collapsed" CurrentCellChanged="DGFoglalok_CurrentCellChanged">
+        <DataGrid x:Name="DGFoglalok" Grid.Row="4" Margin="5px" SelectionChanged="DGFoglalok_SelectionChanged" ItemsSource="{Binding}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Visibility="Collapsed" CurrentCellChanged="DGFoglalok_CurrentCellChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Header="Személyi szám" Binding="{Binding Szemszam}"/>
                 <DataGridTextColumn Header="Név"  Binding="{Binding Nev}"/>
