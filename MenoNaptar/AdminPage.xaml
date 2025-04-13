@@ -7,7 +7,7 @@
         xmlns:models="clr-namespace:MenoNaptar.Models"
         xmlns:core="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Adminisztrációs Felület" Height="500" Width="800">
+        Title="Adminisztrációs Felület" Height="500" Width="900">
     <Window.Resources>
         <ObjectDataProvider x:Key="EllatasTipusEnum" MethodName="GetValues" ObjectType="{x:Type core:Enum}">
             <ObjectDataProvider.MethodParameters>
