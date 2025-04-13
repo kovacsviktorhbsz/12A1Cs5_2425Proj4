@@ -7,7 +7,7 @@
         xmlns:models="clr-namespace:MenoNaptar.Models"
         xmlns:core="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Adminisztrációs Felület" Height="450" Width="800">
+        Title="Adminisztrációs Felület" Height="500" Width="800">
     <Window.Resources>
         <ObjectDataProvider x:Key="EllatasTipusEnum" MethodName="GetValues" ObjectType="{x:Type core:Enum}">
             <ObjectDataProvider.MethodParameters>
@@ -22,6 +22,7 @@
             <RowDefinition Height="0.5*" />
             <RowDefinition Height="0.7*" />
             <RowDefinition Height="4*"/>
+            <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -58,5 +59,6 @@
         </DataGrid>
 
         <Button x:Name="torlesBtn" Grid.Row="5" Margin="5px" Content="Törlés" IsEnabled="False" Background="#eb4034" FontSize="15px" Click="torlesBtn_Click" />
+        <Button x:Name="statBtn" Grid.Row="6" Margin="5px" Content="Statisztikák" FontSize="15px" Click="statBtn_Click" />
     </Grid>
 </Window>

@@ -166,5 +166,11 @@ namespace MenoNaptar
         {
             Context.SaveChanges();
         }
+
+        private void statBtn_Click(object sender, RoutedEventArgs e)
+        {
+            StatWindow statWindow = new StatWindow(Context);
+            statWindow.ShowDialog();
+        }
     }
 }
