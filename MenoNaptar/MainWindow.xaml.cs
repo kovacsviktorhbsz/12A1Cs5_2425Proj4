@@ -370,7 +370,7 @@ namespace MenoNaptar
                 Foglalo = foglalo,
                 CheckInDatum = selectedDates.checkIn.Value.date,
                 CheckOutDatum = selectedDates.checkOut.Value.date,
-                Ellatas = ellatas,
+                Ellatas = (EllatasTipus)ellatas,
                 SzemelyekSzama = people,
             });
 

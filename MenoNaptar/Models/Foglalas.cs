@@ -11,6 +11,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MenoNaptar.Models
 {
+    public enum EllatasTipus
+    {
+        Nincs = 0,
+        Reggeli = 1,
+        ReggeliVacsora = 2,
+        AllInclusive = 3,
+    };
+
     public class Foglalas
     {
         [Key]
@@ -22,7 +30,8 @@ namespace MenoNaptar.Models
         public DateTime CheckInDatum { get; set; }
         public DateTime CheckOutDatum { get; set; }
         public int SzemelyekSzama { get; set; }
-        public int Ellatas { get; set; }
+        [Column(TypeName = "int")]
+        public EllatasTipus Ellatas { get; set; }
 
         public override string ToString()
         {

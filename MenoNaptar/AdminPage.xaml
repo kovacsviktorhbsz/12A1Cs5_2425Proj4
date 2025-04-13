@@ -4,8 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MenoNaptar"
+        xmlns:models="clr-namespace:MenoNaptar.Models"
+        xmlns:core="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="Adminisztrációs Felület" Height="450" Width="800">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="EllatasTipusEnum" MethodName="GetValues" ObjectType="{x:Type core:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type Type="models:EllatasTipus" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.5*" />
@@ -30,7 +39,7 @@
                 <DataGridTextColumn Header="Szobaszám" IsReadOnly="True" Binding="{Binding Szobaszam}"/>
                 <DataGridTextColumn Header="Bejelentkezés" IsReadOnly="True"  Binding="{Binding CheckInDatum, StringFormat=yyyy-MM-dd}"/>
                 <DataGridTextColumn Header="Kijelentkezés" IsReadOnly="True"  Binding="{Binding CheckOutDatum, StringFormat=yyyy-MM-dd}"/>
-                <DataGridTextColumn Header="Ellátás"  Binding="{Binding Ellatas}"/>
+                <DataGridComboBoxColumn Header="Ellátás" SelectedItemBinding="{Binding Ellatas}" ItemsSource="{Binding Source={StaticResource EllatasTipusEnum}}" />
                 <DataGridTextColumn Header="Vendégek száma" IsReadOnly="True"  Binding="{Binding SzemelyekSzama}"/>
                 <DataGridTextColumn Header="Személyi szám" IsReadOnly="True" Binding="{Binding Foglalo.Szemszam}"/>
                 <DataGridTextColumn Header="Név" IsReadOnly="True" Binding="{Binding Foglalo.Nev}"/>
